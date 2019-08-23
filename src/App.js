@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
@@ -5,14 +6,14 @@ import { addItem } from  './actions/items';
 
 class App extends Component {
 
-  handleOnClick() {
-    this.props.store.dispatch(addItem());
+  handleOnClick = event => {
+    this.props.addItem()
   }
 
   render() {
     return (
       <div className="App">
-        <button onClick={(event) => this.handleOnClick(event)}>
+        <button onClick={this.handleOnClick}>
           Click
           </button>
         <p>{this.props.items.length}</p>
@@ -27,4 +28,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { addItem })(App);
+/* ES6 shorthand lets us pass in *one* value that will be read as the key and value */
+/*By default mapDispatchToProps is just dispatch => ({ dispatch }).
+So if you don't specify the second argument to connect(),
+you'll get dispatch injected as a prop in your component.*/
