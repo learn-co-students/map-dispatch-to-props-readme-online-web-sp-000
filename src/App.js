@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { addItem } from './actions/items';
 
 class App extends Component {
-  handleOnClick = (event) => {
+  handleOnClick = () => {
     this.props.addItem();
   };
 
   render() {
-    // console.log(this.props.dispatch());
     return (
       <div className='App'>
         <button onClick={this.handleOnClick}>Click</button>
