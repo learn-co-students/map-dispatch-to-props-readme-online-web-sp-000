@@ -5,13 +5,14 @@ import { addItem } from  './actions/items';
 
 class App extends Component {
 
-  handleOnClick() {
-    this.props.store.dispatch(addItem());
+  handleOnClick = event => {
+    this.props.addItem()
   }
 
   render() {
     return (
       <div className="App">
+        {/* onClick --> dispatches an action to the store */}
         <button onClick={(event) => this.handleOnClick(event)}>
           Click
           </button>
@@ -23,8 +24,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items
+    addItem: () => {
+    dispatch(addItem()) // ==> available to App as this.props.items
+    }
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
