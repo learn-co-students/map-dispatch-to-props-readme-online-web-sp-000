@@ -47,10 +47,8 @@ class App extends Component {
 
 // Or we could get rid of mapStateToProps as well by writing:
 
-//export default connect(state => ({ items: state.items }), { addItem })(App);
+export default connect(state => ({ items: state.items }), { addItem })(App);
 
 // And, actually, we can simply do the following line and still have this.props.dispatch() available in App:
 
-//export default connect(state => ({ items: state.items }))(App); //No. This line from the instructions will break the app in the browser.  Instead, use:
-
-export default connect(state => ({ items: state.items }), {addItem})(App);
+//export default connect(state => ({ items: state.items }))(App); //No. This line from the instructions will break the app in the browser.
