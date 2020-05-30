@@ -41,8 +41,12 @@ debugger;
 
 
 //The following line affords the elimination of the mapStateToProps function above:
+
 //export default connect(mapStateToProps, {addItem})(App);
+
 // Or we could get rid of mapStateToProps as well by writing:
+
 //export default connect(state => ({ items: state.items }), { addItem })(App);
+
 // And, actually, we can simply do the following line and still have this.props.dispatch() available in App:
 export default(connect)(state => ({ items: state.items }))(App);
