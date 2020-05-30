@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { addItem } from  './actions/items';
-
+ 
 class App extends Component {
-
-  handleOnClick() {
-    this.props.store.dispatch(addItem());
+ 
+  handleOnClick = event => {
+    this.props.addItem()
   }
-
+ 
   render() {
+    debugger
     return (
       <div className="App">
-        <button onClick={(event) => this.handleOnClick(event)}>
+        <button onClick={this.handleOnClick}>
           Click
           </button>
         <p>{this.props.items.length}</p>
@@ -20,11 +21,31 @@ class App extends Component {
     );
   }
 };
-
+ 
 const mapStateToProps = (state) => {
   return {
     items: state.items
   };
 };
+ 
+export default connect(mapStateToProps, { addItem })(App); // Code change: no mapDispatchToProps function required!
 
-export default connect(mapStateToProps)(App);
+
+// could be shortened to:
+// export default connect(state => ({ items: state.items }), { addItem })(App);
+
+//which is equivalent to:
+
+// const mapStateToProps = state => {
+//   return {
+//     items: state.items
+//   }
+// }
+ 
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addItem: () => { dispatch(addItem()) }
+//   }
+// }
+ 
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
