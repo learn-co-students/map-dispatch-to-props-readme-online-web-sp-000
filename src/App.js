@@ -6,10 +6,12 @@ import { addItem } from  './actions/items';
 class App extends Component {
 
   handleOnClick() {
-    this.props.store.dispatch(addItem());
+    //this.props.store.dispatch(addItem());
+    this.props.addItem()
   }
 
   render() {
+debugger;
     return (
       <div className="App">
         <button onClick={(event) => this.handleOnClick(event)}>
@@ -21,10 +23,26 @@ class App extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.items
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     items: state.items
+//   };
+// };
 
-export default connect(mapStateToProps)(App);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addItem: () => {
+//       dispatch(addItem())
+//     }
+//   }
+// }
+
+//export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+//The following line affords the elimination of the mapStateToProps function above:
+//export default connect(mapStateToProps, {addItem})(App);
+// Or we could get rid of mapStateToProps as well by writing:
+//export default connect(state => ({ items: state.items }), { addItem })(App);
+// And, actually, we can simply do the following line and still have this.props.dispatch() available in App:
+export default(connect)(state => ({ items: state.items }))(App);
