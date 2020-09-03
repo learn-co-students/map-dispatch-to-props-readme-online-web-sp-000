@@ -41,5 +41,6 @@ const mapDispatchToProps = dispatch => {
      };
 };
 
-export default connect(state=> ({ items: state.items }),{addItem})(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 //Code change: no mapDispatchToProps function required!
