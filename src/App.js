@@ -27,4 +27,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(state => (({ items: state.items })), { addItem })(App);
+export default connect(state => ({ items: state.items }), { addItem })(App);
