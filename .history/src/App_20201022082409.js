@@ -11,7 +11,6 @@ class App extends Component {
   }
 
   render() {
-    debugger
     return (
       <div className="App">
         <button onClick={(event) => this.handleOnClick(event)}>
@@ -36,6 +35,4 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
-// export default connect(mapStateToProps, { addItem })(App); // Code change: no mapDispatchToProps function required!
-export default connect(state => ({ items: state.items }), { addItem })(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
