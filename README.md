@@ -1,4 +1,4 @@
-# Mapping Dispatch to Props
+## Mapping Dispatch to Props
 
 ## Objectives
 
