@@ -1,3 +1,3 @@
-export const addItem = (name) => {
+export const addItem = () => {
   return { type: 'INCREASE_COUNT' };
 };
